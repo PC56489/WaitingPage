@@ -80,5 +80,31 @@
             <p>目前有太多使用者正在觀看。<br>請稍候片刻，我們很快就會回來。<br>正在重新連線...</p>
         </div>
     </div>
+    <script>
+        const dvd = document.querySelector('.dvd-pic');
+        let x = 20;
+        let y = 50;
+        let dx = 0.2;
+        let dy = 0.2;
+
+        function moveDVD() {
+            x += dx;
+            y += dy;
+
+            if (x <= 0 || x >= window.innerWidth - dvd.clientWidth) {
+                dx = -dx;
+            }
+            if (y <= 0 || y >= window.innerHeight - dvd.clientHeight) {
+                dy = -dy;
+            }
+
+            dvd.style.left = x + 'px';
+            dvd.style.top = y + 'px';
+
+            requestAnimationFrame(moveDVD);
+        }
+
+        moveDVD();
+    </script>
 </body>
 </html>
