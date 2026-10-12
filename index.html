@@ -19,6 +19,7 @@
             color: red;
             width: 110px;
             height: auto;
+            transition: color 0.2s ease;
         }
         .midbox{
             position: absolute;
@@ -100,6 +101,15 @@
         let dx = 1;
         let dy = 1;
 
+        function getRandomColor() {
+            const hue = Math.floor(Math.random() * 360);
+            return `hsl(${hue}, 100%, 60%)`;
+        }
+        
+        function changeColor() {
+            dvd.style.color = getRandomColor();
+        }
+
         function moveDVD() {
             let speed = parseFloat(speedRange.value);
             x += dx*speed;
@@ -107,9 +117,11 @@
 
             if (x <= 0 || x >= window.innerWidth - dvd.clientWidth) {
                 dx = -dx;
+                changeColor();
             }
             if (y <= 0 || y >= window.innerHeight - dvd.clientHeight) {
                 dy = -dy;
+                changeColor();
             }
 
             dvd.style.left = x + 'px';
