@@ -49,6 +49,13 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+        .speedcontroller{
+            position: absolute;
+            right: 30px;
+            bottom: 20px;
+            transform: translateX(-10%);
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -80,16 +87,23 @@
             <p>目前有太多使用者正在觀看。<br>請稍候片刻，我們很快就會回來。<br>正在重新連線...</p>
         </div>
     </div>
+    <div class="speedcontroller">
+        DVD 速度
+        <input type="range" id="speedRange" min="0.2" max="2" step="0.1" value="0.2">
+    </div>
     <script>
         const dvd = document.querySelector('.dvd-pic');
+        const speedRange = document.getElementById('speedRange');
+        
         let x = 20;
         let y = 50;
-        let dx = 0.2;
-        let dy = 0.2;
+        let dx = 1;
+        let dy = 1;
 
         function moveDVD() {
-            x += dx;
-            y += dy;
+            let speed = parseFloat(speedRange.value);
+            x += dx*speed;
+            y += dy*speed;
 
             if (x <= 0 || x >= window.innerWidth - dvd.clientWidth) {
                 dx = -dx;
