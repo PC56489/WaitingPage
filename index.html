@@ -15,19 +15,25 @@
             position: absolute;
             top: 50%;
             left: 50%;
+            transform: translate(-50%, -50%);
             user-select: none;
             pointer-events: none;
-            transform: translate(-50%, -50%);
             font-size: 3rem;
+            font-weight: 900;
+            font-style: italic;
+            text-align: center;
             color: red;
-            animation: dvdMove 5s linear infinite;
+            border: 3px solid currentColor;
+            border-radius: 50%;
         }
         .midbox{
             position: absolute;
+            inset: 0;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
+            pointer-events: none
         }
     </style>
 </head>
